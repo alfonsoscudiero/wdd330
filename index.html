@@ -11,14 +11,14 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32"  href="./favicon.png">
     <!-- Meta Tags for Social Media -->
-    <meta property="og:url" content="https://alfonsoscudiero.github.io/Nasa-App/"> 
+    <meta property="og:url" content="https://alfonsoscudiero.github.io/wdd330/">
+    <meta property="og:type" content="website"> 
     <meta property="og:title" content="Nasa APOD App">
     <meta property="og:description" content="NASA APOD App is a an interactive guide to provide daily images of the universe, accompanied by professional explanations.">
     <meta property="og:image" content="https://ibb.co/svwr0mnJ">
     <!-- External Styles -->
+     <link rel="stylesheet" href="./styles/normalize.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <!-- Google Fonts -->
-
     <!--External Scripts  -->
     <script src="./scripts/navigationMenu.js" defer></script>
     <script src="./scripts/validateForm.js" defer></script>
@@ -101,7 +101,7 @@
                         <!-- Password -->
                         <div class="form-group">
                             <label for="password1">Password</label>
-                            <input type="password" id="password1" placeholder="Create Password (Min. 8 Characters)" required minlength="8" autocomplete="off" text="Password must be at least 8 characters long" >
+                            <input type="password" id="password1" placeholder="Create Password (Min. 8 Characters)" required minlength="8" autocomplete="off" title="Password must be at least 8 characters long" >
                         </div>
                         <!-- Confirm Password -->
                         <div class="form-group">
@@ -129,7 +129,6 @@
                 <p>Last Updated: <span id="date-modified"></span></p>
             </div>
         </footer>   
-    
     </div>
 </body>
 </html>

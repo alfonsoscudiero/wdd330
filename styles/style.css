@@ -51,12 +51,19 @@ body {
   padding: 0;
   background: #000;
   font-family: "Inter", sans-serif;
+  overflow-x: hidden;
 }
 
 .body-wrapper {
   max-width: 2440px;
   margin: 0 auto;
 }
+
+/*  Remove property text rendering from Font Awesome v.6.7.2   */
+.fa, .fa-brands, .fa-regular, .fa-solid, .fab, .far, .fas {
+  text-rendering: optimizeLegibility !important; 
+}
+
 
 /* --- Navigation Menu ------------------------------ */
 /* Overlay */
@@ -503,7 +510,7 @@ input::placeholder {
 }
 
 input:valid {
-  border: 1xp solid var(--navColor2);
+  border: 1px solid var(--navColor2);
 }
 
 input:invalid {
@@ -619,7 +626,7 @@ footer a:hover {
   }
 
   .search-container {
-    width: 90%; /
+    width: 90%; 
   }
 
   #search-input {
