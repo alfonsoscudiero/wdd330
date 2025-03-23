@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NASA APOD App</title>
+    <title>NASA API App</title>
     <!-- Meta Description -->
     <meta name="description" content="NASA APOD App Landing Page.">
     <!-- Metha Author -->
@@ -17,7 +17,7 @@
     <meta property="og:description" content="NASA APOD App is a an interactive guide to provide daily images of the universe, accompanied by professional explanations.">
     <meta property="og:image" content="https://ibb.co/svwr0mnJ">
     <!-- External Styles -->
-     <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/normalize.css">
     <link rel="stylesheet" href="./styles/style.css">
     <!--External Scripts  -->
     <script src="./scripts/navigationMenu.js" defer></script>
@@ -35,7 +35,7 @@
                 <nav>
                     <ul>
                         <li id="nav-1" class="slide-out-1 active"><a href="#home">Home</a></li>
-                        <li id="nav-2" class="slide-out-2"><a href="#apod">NASA APOD</a></li>
+                        <li id="nav-2" class="slide-out-2"><a href="#apod"> NASA APOD</a></li>
                         <li id="nav-3" class="slide-out-3"><a href="#favorite">Favorites</a></li>
                         <li id="nav-4" class="slide-out-4"><a href="#mars">Mars Exploration</a></li>
                         <li id="nav-5" class="slide-out-5"><a href="#contact">Sign Up</a></li>
@@ -49,8 +49,12 @@
                 <div class="bar3"></div>
             </div>  
         </header>
-    
         <main>
+            <!-- Loader -->
+            <div class="loader hidden">
+                <img src="./animations/earthRotation.svg" alt="Earth sattelite animation">
+            </div>
+
             <!-- Sections -->
             <section id="home">
                 <a href="https://www.byui.edu/" target="_blank">BYU Idaho</a>
@@ -58,8 +62,9 @@
                     <h1>Ready to Explore the Universe?</h1>
                     <div class="search-container">
                         <form id="search-form" action="https://www.nasa.gov/" method="GET">
-                            <input type="text" id="search-input" name="search" placeholder="Search..." autocomplete="off">
-                            <button type="submit" id="search-button" title="Search for images, videos, or articles on NASA website">
+                            <label for="search-input" class="visually-hidden">Search NASA</label>
+                            <input type="search" id="search-input" name="search" placeholder="Search..." autocomplete="off" spellcheck="false" title="Search for images, videos, or articles on NASA website" >
+                            <button type="submit" id="search-button" aria-label="Search NASA" title="Search NASA">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </form>
@@ -68,11 +73,25 @@
             </section>   
     
             <section id="apod">
-                <h2>APOD</h2>
+                <h2>NASA APOD</h2>
+                <div class="apod-content">
+                    <div class="apod-description-container">
+                        <p>NASA's Astronomy Picture of the Day <span class="highlight-text">(APOD)</span> is a website that provides a daily captivating image or photograph of our universe, accompanied by a concise explanation written by a professional astronomer.</p>
+                        <p>It's a fantastic resource for anyone interested in astronomy and space exploration, offering a daily dose of cosmic wonder.</p>
+                        <a href="" target="_blank">
+                            <button class="cta-button" id="apod-button">Discover It</button>
+                        </a>
+                    </div>
+                    <figure class="apod-figure">
+                        <img src="./images/large-images/apod-lg.webp" alt="Astronomy Picture of the Day" title="Astronomy Picture of the Day" loading="lazy">                        
+                        <figcaption class="apod-figcaption">Astronomy Picture of the Day</figcaption>
+                    </figure>
+                </div>
             </section>
     
             <section id="favorite">
                 <h2>Favorites</h2>
+                
             </section>    
     
             <section id="mars">
@@ -80,40 +99,44 @@
             </section>
             
             <section id="contact">
-                <div class="newsletter-signup">
-                    <h2>Join Our Newsletter</h2>
-                    <p>Embark on a daily cosmic adventure with our exclusive newsletter, delivering breathtaking NASA imagery, breaking mission updates, and fascinating astronomical insights directly to your inbox.<br>Imagine waking up to stunning visuals of distant galaxies and being the first to know about groundbreaking discoveries.<br>Don't just dream of the stars – experience them daily.<br>Sign up now and ignite your passion for the universe!</p>
-                </div>
-                <div class="contact-container">
-                    <h2>Sign Up Today!</h2>
-                    <!-- Form -->
-                    <form id="sign-up-form" novalidate>
-                        <!-- Full Name -->
-                        <div class="form-group">
-                            <label for="full-name">Full Name</label>
-                            <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" minlength="3" maxlength="100" required>
+                <h2>Join Us</h2>
+                <div class="contact-content">
+                    <div class="contact-description-container">
+                        <p>Embark on a daily cosmic adventure with our exclusive newsletter, delivering breathtaking NASA imagery, breaking mission updates, and fascinating astronomical insights directly to your inbox.</p>
+                        <p>Imagine waking up to stunning visuals of distant galaxies and being the first to know about groundbreaking discoveries.</p>
+                        <p>Join our community of space enthusiasts and stay connected with the latest in astronomy and space exploration.</p>
+                    </div>    
+                    <div class="contact-form-container">
+                        <h3>Sign Up for Our Newsletter</h3>
+                        <!-- Form -->
+                        <form id="sign-up-form" novalidate>
+                            <!-- Full Name -->
+                            <div class="form-group">
+                                <label for="full-name">Full Name</label>
+                                <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" minlength="3" maxlength="100" required>
+                            </div>
+                            <!-- Email Address -->
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                            </div>
+                            <!-- Password -->
+                            <div class="form-group">
+                                <label for="password1">Password</label>
+                                <input type="password" id="password1" placeholder="Create Password (Min. 8 Characters)" required minlength="8" autocomplete="off" title="Password must be at least 8 characters long" >
+                            </div>
+                            <!-- Confirm Password -->
+                            <div class="form-group">
+                                <label for="password2">Confirm Password</label>
+                                <input type="password" id="password2" name="password" placeholder="Re-enter Password" required autocomplete="off" >
+                            </div>
+                            <!-- Submit Button -->
+                            <button type="submit">Explore Now</button>
+                        </form>
+                        <!-- Error / Success Message -->
+                        <div class="message-container">
+                            <h4 id="message">Unlock It</h4>
                         </div>
-                        <!-- Email Address -->
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-                        </div>
-                        <!-- Password -->
-                        <div class="form-group">
-                            <label for="password1">Password</label>
-                            <input type="password" id="password1" placeholder="Create Password (Min. 8 Characters)" required minlength="8" autocomplete="off" title="Password must be at least 8 characters long" >
-                        </div>
-                        <!-- Confirm Password -->
-                        <div class="form-group">
-                            <label for="password2">Confirm Password</label>
-                            <input type="password" id="password2" name="password" placeholder="Re-enter Password" required autocomplete="off" >
-                        </div>
-                        <!-- Submit Button -->
-                        <button type="submit">Explore Now</button>
-                    </form>
-                    <!-- Error / Success Message -->
-                    <div class="message-container">
-                        <h3 id="message">Unlock It</h3>
                     </div>
                 </div>
             </section>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA APOD</title>
+    <!-- Meta Description -->
+    <meta name="description" content="Experience the cosmos through NASA's Astronomy Picture of the Day.">
+    <!-- Metha Author -->
+    <meta name="author" content="Alfonso Scudiero">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32"  href="./favicon.png">
+    <!-- Meta Tags for Social Media -->
+    <meta property="og:url" content="https://alfonsoscudiero.github.io/wdd330/">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="Nasa APOD App">
+    <meta property="og:description" content="NASA APOD App is a an interactive guide to provide daily images of the universe, accompanied by professional explanations.">
+    <meta property="og:image" content="https://ibb.co/svwr0mnJ">
+    <!-- External Styles -->
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/apod.css">
+    <!--External Scripts  -->
+    <script src="./scripts/navigationMenu.js" defer></script>
+    <!-- <script src="./scripts/validateForm.js" defer></script> -->
+    <script src="./scripts/utils.js" defer></script>
+    <!-- External Resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="body-wrapper">        
+    <header id="header-content">
+        <!-- Menu Overlay -->
+        <div class="overlay overlay-slide-left" id="overlay">    
+            <!-- Menu Items -->
+            <nav>
+                <ul>
+                    <li id="nav-1" class="slide-out-1"><a href="">Home</a></li>
+                    <li id="nav-2" class="slide-out-2 active"><a href="#apod-container"> NASA APOD</a></li>
+                    <li id="nav-3" class="slide-out-3"><a href="">Favorites</a></li>
+                    <li id="nav-4" class="slide-out-4"><a href="">Mars Exploration</a></li>
+                    <li id="nav-5" class="slide-out-5"><a href="">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>  
+        <!-- Menu Bars -->
+        <div class="menu-bars" id="menu-bars">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>  
+    </header>
+    <main>
+        <!-- Loader -->
+        <div class="loader hidden">
+            <img src="./animations/earthRotation.svg" alt="Earth sattelite animation">
+        </div>      
+        <!-- Hero Image and Title -->
+        <!-- Splash Screen -->  
+        <section id="apod-splash">
+            <a href="https://www.byui.edu/" target="_blank">BYU Idaho</a>
+            <!-- Hero Image and Title -->
+            <div class="home-content">
+                <h1>NASA Astronomy<br>Images and Expert Insights</h1>            
+            </div>
+        </section>
+
+        <!-- APOD UI -->
+        <section id="apod-container">
+            <!-- Navigation -->
+            <div class="apod-navigation-container">
+                <span class="apod-nav-container-background"></span>
+                <!-- Results Navigation -->
+                <span class="nav-items" id="results-nav">
+                    <a href="">
+                        <h2 class="clickable" onclick="updateDOM('favorites')">Favorites</h2>
+                    </a>
+                    <h2>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</h2>
+                    <h2 class="clickable" onclick="getNasaPictures()">Load More</h2>
+                </span>
+
+                <!-- Card container -->
+                <div class="card-container">
+                    <div class="card">
+                        <a href="" title="View Full Image" target="_blank">
+                            <img src="https://www.nasa.gov/wp-content/uploads/2025/02/54342162909-49623f5417-o.jpg" alt="NASA Picture of the Day" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <h3 class="card-title">Milky Way on the Horizon</h3>
+                            <p class="clickable">Add to Favorites</p>
+                            <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptatem officia voluptas id esse maxime reiciendis animi atque, accusamus deserunt quis modi eligendi iusto ipsam, ab illum delectus perferendis? Voluptatum inventore tempore debitis error quidem, ipsum earum molestias exercitationem, dolorem, expedita quod animi enim eos! Amet nesciunt alias, et soluta id sit voluptas, quidem, autem ipsa dignissimos deserunt est iusto.</p>
+                            <small class="text-muted"><strong>02-26-2025</strong><span> Copyright Info</span></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- APOD Content -->               
+            <!-- Saved Confirmation -->
+            <div class="save-confirmed hidden">
+                <h3>SAVED</h3>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; <span id="current-year"></span> Alfonso Scudiero | Images by <a href="https://unsplash.com/" target="_blank"> Unplash</a></p>
+            <p>WDD330 - BYU Idaho</p>
+            <p>Open API provided by <a href="https://api.nasa.gov/">NASA</a></p>
+            <hr id="border-clear">
+            <p>Last Updated: <span id="date-modified"></span></p>
+        </div>
+    </footer>  
+    </div>
+</body>

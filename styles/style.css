@@ -59,11 +59,22 @@ body {
   margin: 0 auto;
 }
 
-/*  Remove property text rendering from Font Awesome v.6.7.2   */
-.fa, .fa-brands, .fa-regular, .fa-solid, .fab, .far, .fas {
-  text-rendering: optimizeLegibility !important; 
+/* Loader Animation Style */
+.loader {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #232325;
+  z-index: 20;
 }
 
+.loader img {
+  width: 75px;
+  height: auto;
+}
 
 /* --- Navigation Menu ------------------------------ */
 /* Overlay */
@@ -101,6 +112,14 @@ nav ul {
   flex-direction: column;
   justify-content: stretch;
   list-style: none;
+}
+
+.active a {
+  color: var(--primaryColor);
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  transform: scale(1.1);
+  font-weight: bold;
 }
 
 nav ul li {
@@ -270,7 +289,6 @@ nav li:nth-of-type(5) {
 }
 
 /* --- Sections ------------------------------------ */
-
 section {
   width: 100%;
   height: 100vh;
@@ -299,7 +317,9 @@ section#home {
   align-items: center; 
 }
 
-section#home a {
+section#home a,
+section#apod-splash a,
+section#favorites-splash a {
   position: absolute;
   z-index: 2;
   top: 1.5rem;
@@ -316,7 +336,10 @@ section#home a {
   font-weight: 800;
 }
 
-section#home a:hover {
+section#home a:hover,
+section#apod-splash a:hover,
+section#favorites-splash a {
+  color: var(--navColor3);
   border-bottom: 2px solid var(--navColor3);
 }
 
@@ -335,6 +358,7 @@ section#home a:hover {
   user-select: none;
   font-size: 1.5rem;
   font-size: clamp(1.5rem, 1.0108695652173911rem + 1.3043478260869565vw, 3rem);
+  line-height: 48px;
   width: 500px;
   max-width: 500px;
   text-transform: initial;
@@ -360,6 +384,20 @@ section#home a:hover {
   display: flex;
   align-items: center;
   height: 100%;
+}
+
+
+/* Search Input and Button */
+/* Search Input */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0; 
 }
 
 #search-input { 
@@ -406,11 +444,6 @@ section#home a:hover {
 
 /* Other Sections */
 
-section#apod{
-  background: var(--navColor1);
-  color: var(--primaryColor);
-}
-
 section#mars {
   background: var(--navColor2);
   color: var(--primaryColor);
@@ -421,56 +454,261 @@ section#contact {
   background: var(--navColor5);
 }
 
-/* --- Contact Section ------------------------------ */
-/* Contact Section Style */
-section#contact {
+/* --- Sections ------------------------------ */
+/* APOD Section Style */
+section#apod {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  height: 100vh; 
+  min-height: 100vh; 
   width: 100vw; 
-  background: var(--navColor5);
+  background: var(--navColor1);
   color: var(--primaryColor);
 }
 
-.newsletter-signup {
+/* APOD Section Header */
+section#apod h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: #fc3d21 0px 0px 5px;
+  color: var(--primaryColor);
+  font-family: "Rubik", sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem; 
+  margin-bottom: 1rem;
+}
+
+/* APOD, Content */
+/* APOD, Content Container */
+.apod-content {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
+  flex-grow: 1; /* Allow the container to grow and fill the available space */
   width: 100%;
-  max-width: 480px;
-  height: 100%;
-  color: var(--ligh-color);
+  max-width: 800px; 
   padding: 0 20px; 
   box-sizing: border-box;
 }
 
-.newsletter-signup p {
-  text-transform: none;
-  letter-spacing: 0;
-  line-height: 25px;
-  padding: 10px;
-}
-
-/* Form Style */
-.contact-container {
+/* APOD Description Style */
+/* APOD Description */
+.apod-description-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 800px; 
+  padding: 0 20px; 
+  box-sizing: border-box;
+  margin-top: 1rem;
+}
+
+.apod-description-container p {
+  text-transform: none;
+  color: var(--ligh-color);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem; 
+  line-height: 25px; 
+  margin: 0;
+}
+
+.highlight-text {
+  color: var(--navColor4); 
+  font-weight: 800; 
+  text-transform: uppercase; 
+}
+
+.apod-description-container p:first-of-type {
+  margin-bottom: 20px; 
+}
+.apod-description-container p:last-of-type {
+  margin-bottom: 20px; 
+}
+
+/* APOD Figure Style */
+/* APOD Figure */
+.apod-figure{
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  max-width: 480px;
-  height: 530px; 
-  border-radius: 10px;
-  background: var(--ligh-color);
+  align-items: center;
+  width: 100%;
+  max-width: 900px; 
+  flex-grow: 2; 
+  padding: 0 20px; 
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.apod-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.apod-figure figcaption {
+  text-transform: capitalize;
+  text-align: center;
+  text-shadow: #000000 0px 0px 5px;
+  color: var(--ligh-color);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem; 
+  line-height: 25px; 
+  margin: 5px 0 0;
+}
+
+/* APOD Figure Button */
+.apod-figure a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;  
+}
+
+#apod-button {
+  cursor: pointer;
+  color: var(--primaryColor);
+  background: var(--font-color);
+  border: none;
+  border-radius: 5px;
+  height: 50px;
+  width: fit-content;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem; 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 15px;
+}
+
+#apod-button:hover {
+  filter: brightness(200%);
+  background: var(--navColor5);
+  transition: all 0.2s ease-in-out;
+}
+.apod-figure button:focus {
+  outline: none;
+}
+
+/* --- Favorite Section ------------------------------ */
+/* Favorite Section Style */
+
+/* --- Mars Section ------------------------------ */
+/* Mars Section Style */
+
+/* --- Contact Section ------------------------------ */
+/* Contact Section Style */
+section#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--navColor5);
+  color: var(--primaryColor);
+  padding: 20px 0;
   box-sizing: border-box;
 }
 
-.contact-container h2 {
-  color: var(--font-color);
+/* Contact Section Header */
+section#contact h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: #fc3d21 0px 0px 5px;
+  color: var(--primaryColor);
+  font-family: "Rubik", sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem; 
+  /* margin-bottom: 1rem; Added margin for spacing */
 }
 
+/* Contact Content */
+/* Contact Content Container */
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1; 
+  width: 100%;
+  max-width: 800px; 
+  padding: 0 20px; 
+  box-sizing: border-box;
+  /* padding: 25px 20px; */
+}
+
+/* Contact Description Style */
+/* Contact Description */
+.contact-description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 800px; 
+  padding: 0 20px; 
+  box-sizing: border-box;
+  margin-top: 1rem;
+}
+
+.contact-description-container p {
+  text-transform: none;
+  color: var(--ligh-color);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem; 
+  line-height: 25px; 
+  margin: 0;
+}
+
+.contact-description-container p:first-of-type {
+  margin-bottom: 10px; 
+}
+
+.contact-description-container p:nth-of-type(2) {
+  margin-bottom: 10px; 
+}
+
+.contact-description-container p:last-of-type {
+  margin-bottom: 10px; 
+}
+
+/* Contact Form Style */
+.contact-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 480px; 
+  flex-grow: 2; 
+  background: var(--ligh-color);
+  padding: 0 20px; 
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+.contact-form-container h3 {
+  text-align: center;
+  color: var(--navColor4); 
+  font-family: "Rubik", sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem; 
+  margin: 0;
+  width: 90%;
+}
+
+/* Form Style */
 #sign-up-form {
   width: 90%;
 }
@@ -552,6 +790,7 @@ button:focus {
   border: 1px solid var(--navColor5);
   border-radius: 5px;
   width: 90%;
+  max-width: 900px; 
   color: var(--font-color);
   margin-top: 5px;
   height: 50px;
@@ -559,11 +798,14 @@ button:focus {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   text-transform: none;
+  margin-top: 10px;
+  box-sizing: border-box;
 }
 
 #message {
   text-align: center;
   width: 100%;
+  text-transform: uppercase;
 }
 
 /* Footer Style*/
@@ -585,7 +827,7 @@ footer {
 }
 
 footer a {
-  color: var(--navColor3); /* Light blue link color */
+  color: var(--navColor4); 
   text-decoration: none;
 }
 
@@ -599,11 +841,22 @@ footer a:hover {
   background-color: var(--ligh-color); 
 }
 
+/* Hidden Loader */
+.hidden {
+  display: none; 
+}
+
+/* --- Media Queries ------------------------------ */
 /* Medium Screens (601px to 1920px) */
 @media (min-width: 601px) and (max-width: 1920px) {
   section#home {
     background-image: url("../images/med-images/spiral-jetty-med.webp");
   }
+
+  .apod-figure img {
+    src: url("../images/med-images/apod-med.jpg");
+}
+
 }
 
 /* Media Query: Large Smartphone (Vertical) */
@@ -622,7 +875,8 @@ footer a:hover {
     max-width: 90%; 
     width: 90%;
     font-size: 1.5rem; 
-    padding: 15px; /* Adjust padding */
+    padding: 15px;
+    line-height: 32px; 
   }
 
   .search-container {
@@ -642,34 +896,66 @@ footer a:hover {
     font-size: 1rem; 
   }
 
+  /* --- APOD Section ------------------------------ */
+  /* APOD Section Header */
+  section#apod h2 {
+    margin-top: 3rem;
+    font-size: 2rem;
+  }
+
+  /* APOD Content */
+  /* APOD Description Style */
+  .apod-description-container p {
+    font-size: 1rem;
+    line-height: 30px;
+  }
+
+  /* APOD Figure Style */
+  /* APOD Figure */
+    .apod-figure img {
+      src: url("../images/small-images/apod-sm.jpg");
+  }
+
+  .apod-figure figcaption {
+    font-size: 0.9rem; 
+  }
+
+  /* APOD Figure Button */
+  #apod-button {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+
   /* --- Contact Section ------------------------------ */
-  /* Contact Section Style */
-  section#contact {
+  /* Contact Section Header */
+  section#contact h2 {
+    margin: 2rem 0 1rem; 
+    margin-bottom: 0;
+    font-size: 2rem;
+  }
+
+  /* Contact Content */
+  /* Contact Description Style */
+  .contact-description-container p {
+    font-size: 1rem;
+    line-height: 24px; /* Adjust line height for smaller screens */
+  }
+
+
+  /* Contact Form Style */
+  .contact-form-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 90%; 
+    padding: 0 10px; 
   }
 
-  .newsletter-signup {
-    height: 35%;
+  .contact-form-container h3 {
+    font-size: 1.25rem; 
+    margin: 5px 0; 
   }
-
-  .newsletter-signup h2{
-    margin: 2rem 0 -1rem;
-  }
-
-  .newsletter-signup p {
-    line-height: 25px; /* Adjust line height for smaller screens */
-    font-size: 1rem;
-    text-align: justify;
-  }
-
-  .contact-container{
-    width: 380px;
-    height: 60%;
-    margin: 0.5rem 0 1rem;
-  }
-
   .form-group {
     height: 60px;
     margin-top: 3px;
@@ -686,6 +972,7 @@ footer a:hover {
 
   .message-container {
     font-size: 0.8rem;
+    margin: 0 0 5px;
   }
 
   /* Footer Style */
@@ -706,3 +993,6 @@ Source: https://gwfh.mranftl.com/fonts/rubik/
   Photo by Nasa on Unsplash
   Photo by SpaceX on Unsplash
  */
+
+
+ /* <a href="https://www.vecteezy.com/free-photos/space-background">Space Background Stock photos by Vecteezy</a> */
