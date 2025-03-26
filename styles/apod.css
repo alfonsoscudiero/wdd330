@@ -1,4 +1,17 @@
 /* This file contains the CSS styles for the Astronomy Picture of the Day (APOD). */ 
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+main {
+    flex: 1; /* Allow main to grow and take available space */
+    margin-bottom: 2rem; /* Spacing above footer */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+}
 
 /* Menu Bars */
 .menu-bars {
@@ -25,9 +38,18 @@ section#apod-splash {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     background: var(--ligh-color);
+    min-height: 100vh;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+main {
+    flex: 1;
+    margin-bottom: 2rem;
 }
 
 .apod-navigation-container {
@@ -38,7 +60,7 @@ section#apod-splash {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
     width: 100%;
 }
 
@@ -61,19 +83,44 @@ section#apod-splash {
     z-index: -1; 
 }
 
-.nav-items a {
-    text-decoration: none;
+#results-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.clickable {
+#results-nav h2 {
     cursor: pointer;
     user-select: none;
     color: var(--font-color);
     text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    margin: 0;
+    padding: 0.5rem;
 }
 
-.clickable:hover {
+#results-nav h2:hover {
     color: var(--navColor3);
+}
+
+.nav-items a {
+    text-decoration: none;
+}
+
+#results-nav h2:nth-child(2):hover {
+    color: black;
+    cursor: none;
+    pointer-events: none; 
+}
+
+#results-nav h2:first-child {
+    margin-right: auto;
+}
+
+#results-nav h2:last-child {
+    margin-left: auto; 
 }
 
 /* General Card Styling */
@@ -81,21 +128,28 @@ section#apod-splash {
     width: 90%;
     max-width: 800px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 
+
 .card {
-background: white;
-margin: 10px;
-border-radius: 5px;
-box-shadow: 0 4px 8px 0 rgba(0 0 0 / 20%);
-transition: 0.2s;
-width: 100%;
+    background: var(--primaryColor);
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0 0 0 / 20%);
+    transition: 0.2s;
+    /* flex: 0 1 calc(95% - 5px); */
+    width: calc(95% - 5px);
+    height: auto;
+    
+
 }
 
 .card-container .card:hover  {
-box-shadow: 0 8px 16px 0 rgba(0 0 0 / 20%);
+box-shadow: 0 8px 16px 0 rgba(0 0 0 / 30%);
 }
 
 .card-img-top {
@@ -110,10 +164,9 @@ padding: 10px 20px 20px;
 
 .card-body .card-text {
     color: var(--font-color);
-    font-size: 1.2rem !important;
+    font-size: 1.1rem !important;
     margin: 5px auto;
     font-family: "Inter", sans-serif;
-    /* line-height: 1rem; */
     text-transform: none;
 }
 
@@ -139,25 +192,79 @@ padding: 10px 20px 20px;
 }
 
 .card-body :last-of-type {
-color: var(--font-color);
-margin: 10px auto;
-text-transform: capitalize;
-font-size: 0.9rem;
+    color: var(--font-color);
+    margin: 10px auto;
+    text-transform: capitalize;
+    font-size: 0.9rem;
 }
 
 /* Save Confirmation */
-/* .save-confirmed {
-    background: white;
+.save-confirmed {
+    background: var((--primaryColor));
     padding: 8px 16px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 8px rgba(0 0 0 / 20%);
     transition: 0.2s;
-    position: fixed;
-    bottom: 25px;
+    position: absolute;
+    bottom: 50px;
     right: 50px;
-} */
+}
+
+.save-confirmed h3 {
+    color: var(--navColor1);
+    margin: 0.5rem auto;
+}
 
 /* Hidden */
 .hidden {
-display: none;
+    display: none;
 }
+
+/* Media Query: Large Smartphone (Vertical) */
+@media (max-width: 600px) {
+    .nav-items {
+        gap: 0;
+        padding: 0.2rem;
+
+    }
+
+    #results-nav .clickable {
+        font-size: 1.35rem;
+        padding: 0;
+    }
+
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        width: 95% ;
+        max-width: 400px;
+    }
+
+    .card-body .clickable {
+        font-size: 0.9rem;
+        margin: 1rem auto;
+    }
+
+    .card-body .clickable:hover {
+        font-weight: 800;
+        text-decoration: underline !important;
+    }
+
+    .card-body .card-text {
+        font-size: 1rem !important;
+        text-align: justify;
+        line-height: 1.4rem;
+    }
+    .card-body .card-title {
+        font-size: 1.1rem !important;
+    }
+
+    .card-body :last-of-type {
+        font-size: 0.8rem;
+    }
+
+    .save-confirmed {
+        right: 25px;
+    }
+}
+

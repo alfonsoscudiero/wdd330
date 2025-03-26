@@ -23,7 +23,8 @@
     <!--External Scripts  -->
     <script src="./scripts/navigationMenu.js" defer></script>
     <!-- <script src="./scripts/validateForm.js" defer></script> -->
-    <script src="./scripts/utils.js" defer></script>
+    <script src="./scripts/apod.js" defer></script>
+    <script src="./scripts/updateDate.js" defer></script>
     <!-- External Resources -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -65,7 +66,7 @@
             </div>
         </section>
 
-        <!-- APOD UI -->
+        <!-- APOD Container -->
         <section id="apod-container">
             <!-- Navigation -->
             <div class="apod-navigation-container">
@@ -75,29 +76,46 @@
                     <a href="">
                         <h2 class="clickable" onclick="updateDOM('favorites')">Favorites</h2>
                     </a>
-                    <h2>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</h2>
+                    <h2>&nbsp;&nbsp;•&nbsp;&nbsp;</h2>
                     <h2 class="clickable" onclick="getNasaPictures()">Load More</h2>
                 </span>
 
                 <!-- Card container -->
                 <div class="card-container">
+                    <!-- Cards will be dynamically inserted here -->
                     <div class="card">
-                        <a href="" title="View Full Image" target="_blank">
+                        <a href="" title="View Full Resolution Image" target="_blank">
                             <img src="https://www.nasa.gov/wp-content/uploads/2025/02/54342162909-49623f5417-o.jpg" alt="NASA Picture of the Day" class="card-img-top">
                         </a>
                         <div class="card-body">
                             <h3 class="card-title">Milky Way on the Horizon</h3>
                             <p class="clickable">Add to Favorites</p>
-                            <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptatem officia voluptas id esse maxime reiciendis animi atque, accusamus deserunt quis modi eligendi iusto ipsam, ab illum delectus perferendis? Voluptatum inventore tempore debitis error quidem, ipsum earum molestias exercitationem, dolorem, expedita quod animi enim eos! Amet nesciunt alias, et soluta id sit voluptas, quidem, autem ipsa dignissimos deserunt est iusto.</p>
+                            <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptatem officia voluptas id esse maxime reiciendis animi atque, accusamus deserunt quis modi eligendi iusto ipsam, ab illum delectus perferendis? Voluptatum inventore tempore debitis error quidem, ipsum earum molestias exercitationem, dolorem, expedita quod animi enim eos!.</p>
                             <small class="text-muted"><strong>02-26-2025</strong><span> Copyright Info</span></small>
                         </div>
                     </div>
                 </div>
+
+                                <!-- Card container -->
+                                <div class="card-container">
+                                    <!-- Cards will be dynamically inserted here -->
+                                    <div class="card">
+                                        <a href="" title="View Full Resolution Image" target="_blank">
+                                            <img src="https://www.nasa.gov/wp-content/uploads/2025/02/54342162909-49623f5417-o.jpg" alt="NASA Picture of the Day" class="card-img-top">
+                                        </a>
+                                        <div class="card-body">
+                                            <h3 class="card-title">Milky Way on the Horizon</h3>
+                                            <p class="clickable">Add to Favorites</p>
+                                            <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptatem officia voluptas id esse maxime reiciendis animi atque, accusamus deserunt quis modi eligendi iusto ipsam, ab illum delectus perferendis? Voluptatum inventore tempore debitis error quidem, ipsum earum molestias exercitationem, dolorem, expedita quod animi enim eos!.</p>
+                                            <small class="text-muted"><strong>02-26-2025</strong><span> Copyright Info</span></small>
+                                        </div>
+                                    </div>
+                                </div>
+
             </div>
-            <!-- APOD Content -->               
             <!-- Saved Confirmation -->
             <div class="save-confirmed hidden">
-                <h3>SAVED</h3>
+                <h3>Loading...</h3>
             </div>
         </section>
     </main>
