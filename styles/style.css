@@ -38,7 +38,7 @@
   --navColor3: #105bd8;
   --navColor4: #fc3d21;
   --navColor5: #18181b;
-  --ligh-color: #f5f5f5;
+  --light-color: #f5f5f5;
   --font-color: #000;
 }
 
@@ -49,15 +49,16 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #000;
+  background: var(--font-color);
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
 }
 
-.body-wrapper {
+/* .body-wrapper {
   max-width: 2440px;
+  min-height: 100vh;
   margin: 0 auto;
-}
+} */
 
 /* Loader Animation Style */
 .loader {
@@ -67,7 +68,7 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: var(--ligh-color);
+  background: var(--light-color);
   z-index: 20;
 }
 
@@ -257,7 +258,7 @@ nav li:nth-of-type(5) {
 .menu-bars {
   position: fixed;
   top: 1rem;
-  right: 2rem;
+  right: 2.5rem;
   z-index: 10;
   display: inline;
   cursor: pointer;
@@ -319,6 +320,7 @@ section#home {
 
 section#home a,
 section#apod-splash a,
+section#favorites-splash a,
 section#favorites-splash a {
   position: absolute;
   z-index: 2;
@@ -330,15 +332,14 @@ section#favorites-splash a {
   color: var(--primaryColor);
   border-bottom: 1px solid var(--primaryColor);
   font-family: "Rubik", sans-serif;
-  font-size: 1rem;
-  font-size: 0.9rem;
-  font-size: clamp(0.9rem, 0.8333333333333334rem + 0.17777777777777784vw, 1.1rem);
+  font-size: 1.1rem;
+  /* font-size: clamp(0.9rem, 0.8333333333333334rem + 0.17777777777777784vw, 1.1rem); */
   font-weight: 800;
 }
 
 section#home a:hover,
 section#apod-splash a:hover,
-section#favorites-splash a {
+section#favorites-splash a:hover{
   color: var(--navColor3);
   border-bottom: 2px solid var(--navColor3);
 }
@@ -358,7 +359,8 @@ section#favorites-splash a {
   user-select: none;
   font-size: 1.5rem;
   font-size: clamp(1.5rem, 1.0108695652173911rem + 1.3043478260869565vw, 3rem);
-  line-height: 48px;
+  line-height: 60px;
+  letter-spacing: 5px;
   width: 500px;
   max-width: 500px;
   text-transform: initial;
@@ -510,7 +512,7 @@ section#apod h2 {
 
 .apod-description-container p {
   text-transform: none;
-  color: var(--ligh-color);
+  color: var(--light-color);
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 1.25rem; 
@@ -557,7 +559,7 @@ section#apod h2 {
   text-transform: capitalize;
   text-align: center;
   text-shadow: #000000 0px 0px 5px;
-  color: var(--ligh-color);
+  color: var(--light-color);
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 1rem; 
@@ -617,6 +619,8 @@ section#contact {
   color: var(--primaryColor);
   padding: 20px 0;
   box-sizing: border-box;
+  border: 2px solid red;
+
 }
 
 /* Contact Section Header */
@@ -663,7 +667,7 @@ section#contact h2 {
 
 .contact-description-container p {
   text-transform: none;
-  color: var(--ligh-color);
+  color: var(--light-color);
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 1.25rem; 
@@ -691,7 +695,7 @@ section#contact h2 {
   align-items: center;
   max-width: 480px; 
   flex-grow: 2; 
-  background: var(--ligh-color);
+  background: var(--light-color);
   padding: 0 20px; 
   box-sizing: border-box;
   border-radius: 10px;
@@ -817,12 +821,12 @@ footer {
   color: var(--primaryColor); 
   padding: 20px 0;
   text-align: center;
-  font-size: 0.9em;
+  font-size: 1.25rem;
   line-height: 1.2; 
+  width: 100%;
 }
 
 .footer-content {
-  /* max-width: 800px; */
   margin: 5px 10px; 
 }
 
@@ -838,7 +842,7 @@ footer a:hover {
 #border-clear {
   border: none; 
   height: 1px; 
-  background-color: var(--ligh-color); 
+  background-color: var(--light-color); 
 }
 
 /* Hidden Loader */
@@ -988,7 +992,7 @@ footer a:hover {
   /* Footer Style */
   footer {
     padding: 15px 0;
-    font-size: .75rem;
+    font-size: 1rem;
   }
 
 

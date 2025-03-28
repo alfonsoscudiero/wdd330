@@ -1,3 +1,14 @@
+body {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+    overflow-y: auto;
+}
 
 /* Menu Bars */
 .menu-bars {
@@ -13,11 +24,12 @@ section#favorites-splash {
     background-repeat: no-repeat;
     position: relative;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
+    overflow-x: hidden;
 }
 
 section#favorites-splash::before {
@@ -34,4 +46,185 @@ section#favorites-splash::before {
 section#favorites-splash > * {
     position: relative;
     z-index: 2;
+}
+
+/* Favorite Container Style */
+section#favorites-container {
+    background: var(--light-color);
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    overflow-x: hidden;
+    padding-bottom: 2rem;
+}
+
+#favorites-container-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--font-color);
+    font-family: "Inter", sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    user-select: none;
+    width: 100%;
+    margin: 2rem 0 1rem;
+    padding: 1rem;
+}
+
+/* Favorite Container Styling */
+#favorites-container .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    box-sizing: border-box;
+    height: auto;
+}
+
+/* Favorite Card Styling */
+.card-container-2 {
+    display: flex;
+    flex-direction: column;
+    background: var(--primary-color) !important;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0 0 0 / 20%);
+    transition: 0.2s;
+    margin: 10px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-container-2:hover {
+    box-shadow: 0 8px 16px 0 rgba(0 0 0 / 30%);
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+    padding: 10px 20px 20px;
+}
+
+.card-title{
+    color: var(--font-color);
+    font-size: 1.3rem !important;
+    font-weight: 600;
+    margin: 0 auto 10px;
+    text-transform: capitalize;
+}
+
+.clickable {
+    color: var(--navColor4);
+    text-transform: capitalize;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 5px auto 10px;
+}
+
+.clickable:hover {
+    text-decoration: underline;
+    font-weight: 800;
+}
+
+.card-text {
+    color: var(--font-color);
+    font-size: 1.2rem !important;
+    margin: 5px auto;
+    font-family: "Inter", sans-serif;
+    text-transform: none;
+    line-height: 32px;
+}
+
+.card-body:last-of-type {
+    color: var(--font-color);
+    margin: 10px auto;
+    text-transform: capitalize;
+    font-size: 1.1rem;
+}
+
+/* Remove Confirmation */
+.remove-confirmed {
+    position: absolute; /* Keep absolute positioning */
+    bottom: 0px;       /* Adjust as needed */
+    right: 0px;        /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* keep aligned to the start */
+    background: var(--primaryColor);
+    padding: 8px 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 8px rgba(0 0 0 / 20%);
+    transition: 0.2s;
+    z-index: 10;          /* Ensure it's above other elements */
+}
+
+.remove-confirmed h3 {
+    color: var(--navColor1);
+    margin: 0.5rem auto;
+    align-self: flex-start;
+    justify-self: flex-start;
+}
+
+/* Hidden */
+.hidden {
+    display: none;
+}
+
+/* footer {
+    position: relative;
+    flex-shrink: 0;
+} */
+
+
+/* Media Query: Large Smartphone (Vertical) */
+@media (max-width <= 600px) {
+    /* section#favorites-container {
+        width: 90%;
+    } */
+
+    #favorites-container .grid-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    #favorites-container-title h2{
+        font-size: 1.3rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-body .clickable {
+        font-size: 0.9rem;
+    }
+
+    .clickable:hover {
+        text-decoration: underline;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        text-align: justify;
+        line-height: 1.4rem;
+    }
+
+    .card-body:last-of-type  {
+        font-size: 1rem;
+    }
+
 }

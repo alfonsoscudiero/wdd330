@@ -1,16 +1,13 @@
-/* This file contains the CSS styles for the Astronomy Picture of the Day (APOD). */ 
 body {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 main {
-    flex: 1; /* Allow main to grow and take available space */
-    margin-bottom: 2rem; /* Spacing above footer */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content horizontally */
+    flex: 1 0 auto;
+    overflow-y: auto;
 }
 
 /* Menu Bars */
@@ -27,175 +24,166 @@ section#apod-splash {
     background-repeat: no-repeat;
     position: relative;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
+    overflow-x: hidden;
 }
 
-#apod-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+/* APOD Container Style */
+section#apod-container {
+    background: var(--light-color);
     justify-content: flex-start;
     align-items: center;
-    background: var(--ligh-color);
-    min-height: 100vh;
-    padding-top: 60px;
-    padding-bottom: 20px;
     width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    overflow-x: hidden;
+    padding-bottom: 2rem;
 }
 
-main {
-    flex: 1;
-    margin-bottom: 2rem;
-}
-
-.apod-navigation-container {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* APOD Heading Style */
+#apod-heading {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* margin-top: 0.5rem; */
-    width: 100%;
-}
-
-.nav-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
     color: var(--font-color);
-}
-
-.apod-nav-container-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background: var(--ligh-color);
-    z-index: -1; 
-}
-
-#results-nav {
-    display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-}
-
-#results-nav h2 {
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+    /* text-transform: uppercase; */
+    letter-spacing: 2px;
+    width: 100%;
+    margin: 2rem 0 1rem;
+    padding: 1rem;
     cursor: pointer;
     user-select: none;
+}
+
+/* Style for the links */
+#apod-heading a {
+    text-decoration: none;    
     color: var(--font-color);
+}
+
+/* APOD Card Clickable */
+.clickable {
     text-decoration: none;
-    font-family: "Inter", sans-serif;
-    font-weight: 800;
     font-size: 2rem;
-    margin: 0;
-    padding: 0.5rem;
+    margin: 5px auto 10px;
 }
 
-#results-nav h2:hover {
+/* APOD Card Clickable Hover */
+.clickable:hover {
     color: var(--navColor3);
-}
-
-.nav-items a {
+    font-weight: 800;
     text-decoration: none;
 }
 
-#results-nav h2:nth-child(2):hover {
-    color: black;
-    cursor: none;
-    pointer-events: none; 
+#apod-heading h2 {
+    margin: 0;               
+    padding: 0;
+    color: var(--font-color);
+    font-size: 2rem;
 }
 
-#results-nav h2:first-child {
-    margin-right: auto;
+#apod-heading h2.clickable {
+    cursor: pointer;         
+    transition: color 0.3s ease; 
 }
 
-#results-nav h2:last-child {
-    margin-left: auto; 
+#apod-heading h2.clickable:hover {
+    color: var(--navColor3);
+    text-decoration: none;
 }
 
-/* General Card Styling */
-.card-container {
-    width: 90%;
-    max-width: 800px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+#apod-heading h2:not(.clickable) {
+    font-size: 1rem; 
+}
+
+/* APOD Container Styling */
+#apod-container .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    box-sizing: border-box;
+    height: auto;
 }
 
-
-.card {
-    background: var(--primaryColor);
-    margin: 10px;
-    border-radius: 5px;
+/* APOD Card Container */
+.card-container {
+    display: flex;
+    flex-direction: column;
+    background: var(--primary-color) !important;
+    border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0 0 0 / 20%);
     transition: 0.2s;
-    /* flex: 0 1 calc(95% - 5px); */
-    width: calc(95% - 5px);
-    height: auto;
-    
-
+    margin: 10px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
 
-.card-container .card:hover  {
-box-shadow: 0 8px 16px 0 rgba(0 0 0 / 30%);
+.card-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0 0 0 / 30%);
 }
 
+/* APOD Card Image */
 .card-img-top {
-width: 100%;
-height: auto;
-border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
 }
 
+/* APOD Card Body */
 .card-body {
-padding: 10px 20px 20px;
+    padding: 10px 20px 20px;
 }
 
-.card-body .card-text {
+/* APOD Card Title */
+.card-title {
     color: var(--font-color);
-    font-size: 1.1rem !important;
-    margin: 5px auto;
-    font-family: "Inter", sans-serif;
-    text-transform: none;
+    font-size: 1.3rem !important;
+    font-weight: 600;
+    margin: 0 auto 10px;
+    text-transform: capitalize;
 }
 
-.card-body .clickable {
+/* APOD Card Clickable */
+.clickable {
     color: var(--navColor3);
     text-transform: capitalize;
     text-decoration: none;
     font-size: 1rem;
-    margin: 5px auto;
+    margin: 5px auto 10px;
 }
 
-.card-body .clickable:hover {
+/* APOD Card Clickable Hover */
+.clickable:hover {
     text-decoration: underline;
     font-weight: 800;
 }
 
-.card-body .card-title{
+/* APOD Card Text */
+.card-text {
     color: var(--font-color);
-    font-size: 1.3rem !important;
-    font-weight: 600;
-    margin: 10px auto;
-    text-transform: capitalize;
+    font-size: 1.2rem !important;
+    margin: 5px auto;
+    font-family: "Inter", sans-serif;
+    text-transform: none;
+    line-height: 32px;
 }
 
-.card-body :last-of-type {
+/* APOD Card Body Last */   
+.card-body:last-of-type {
     color: var(--font-color);
     margin: 10px auto;
     text-transform: capitalize;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
 }
 
 /* Save Confirmation */
@@ -221,46 +209,40 @@ padding: 10px 20px 20px;
 }
 
 /* Media Query: Large Smartphone (Vertical) */
-@media (max-width: 600px) {
-    .nav-items {
-        gap: 0;
-        padding: 0.2rem;
-
+@media (max-width <= 600px) {
+    #apod-heading,
+    #apod-heading h2 {
+        font-size: 1.2rem;
     }
 
-    #results-nav .clickable {
-        font-size: 1.35rem;
-        padding: 0;
-    }
-
-    .card-container {
+    #apod-container .grid-container {
         display: flex;
         flex-direction: column;
-        width: 95% ;
-        max-width: 400px;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
     }
 
     .card-body .clickable {
         font-size: 0.9rem;
-        margin: 1rem auto;
     }
 
-    .card-body .clickable:hover {
-        font-weight: 800;
-        text-decoration: underline !important;
+    .clickable:hover {
+        text-decoration: underline;
     }
 
-    .card-body .card-text {
-        font-size: 1rem !important;
+    .card-text {
+        font-size: 1rem;
         text-align: justify;
         line-height: 1.4rem;
     }
-    .card-body .card-title {
-        font-size: 1.1rem !important;
-    }
 
-    .card-body :last-of-type {
-        font-size: 0.8rem;
+    .card-body:last-of-type  {
+        font-size: 1rem;
     }
 
     .save-confirmed {
